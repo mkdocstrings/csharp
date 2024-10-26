@@ -17,13 +17,13 @@ if TYPE_CHECKING:
 logger = get_logger(__name__)
 
 
-class C#Handler(BaseHandler):
+class CSharpHandler(BaseHandler):
     """The C# handler class."""
 
-    name: str = "c#"
+    name: str = "csharp"
     """The handler's name."""
 
-    domain: str = "c#"
+    domain: str = "csharp"
     """The cross-documentation domain/language for this handler."""
 
     enable_inventory: bool = False
@@ -105,8 +105,8 @@ def get_handler(
     custom_templates: str | None = None,
     config_file_path: str | None = None,  # noqa: ARG001
     **config: Any,  # noqa: ARG001
-) -> C#Handler:
-    """Simply return an instance of `C#Handler`.
+) -> CSharpHandler:
+    """Simply return an instance of `CSharpHandler`.
 
     Parameters:
         theme: The theme to use when rendering contents.
@@ -117,8 +117,8 @@ def get_handler(
     Returns:
         An instance of the handler.
     """
-    return C#Handler(
-        handler="c#",
+    return CSharpHandler(
+        handler="csharp",
         theme=theme,
         custom_templates=custom_templates,
         # To pass the following argument,

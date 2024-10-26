@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 
     from mkdocstrings.plugin import MkdocstringsPlugin
 
-    from mkdocstrings_handlers.csharp.handler import C#Handler
+    from mkdocstrings_handlers.csharp.handler import CSharpHandler
 
 
 @pytest.fixture(name="mkdocs_conf")
@@ -39,7 +39,7 @@ def fixture_mkdocs_conf(request: pytest.FixtureRequest, tmp_path: Path) -> Itera
         "site_name": "foo",
         "site_url": "https://example.org/",
         "site_dir": str(tmp_path),
-        "plugins": [{"mkdocstrings": {"default_handler": "c#"}}],
+        "plugins": [{"mkdocstrings": {"default_handler": "csharp"}}],
         **getattr(request, "param", {}),
     }
     # Re-create it manually as a workaround for https://github.com/mkdocs/mkdocs/issues/2289
@@ -84,7 +84,7 @@ def fixture_ext_markdown(mkdocs_conf: config.Config) -> Markdown:
 
 
 @pytest.fixture(name="handler")
-def fixture_handler(plugin: MkdocstringsPlugin, ext_markdown: Markdown) -> C#Handler:
+def fixture_handler(plugin: MkdocstringsPlugin, ext_markdown: Markdown) -> CSharpHandler:
     """Return a handler instance.
 
     Parameters:
@@ -93,6 +93,6 @@ def fixture_handler(plugin: MkdocstringsPlugin, ext_markdown: Markdown) -> C#Han
     Returns:
         A handler instance.
     """
-    handler = plugin.handlers.get_handler("c#")
+    handler = plugin.handlers.get_handler("csharp")
     handler._update_env(ext_markdown, plugin.handlers._config)
     return handler  # type: ignore[return-value]

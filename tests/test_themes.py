@@ -34,7 +34,7 @@ def test_render_themes_templates_python(identifier: str, plugin: MkdocstringsPlu
         plugin: Pytest fixture (see conftest.py).
         ext_markdown: Pytest fixture (see conftest.py).
     """
-    handler = plugin.handlers.get_handler("c#")
+    handler = plugin.handlers.get_handler("csharp")
     handler._update_env(ext_markdown, plugin.handlers._config)
     data = handler.collect(identifier, {})
     handler.render(data, {})
